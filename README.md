@@ -7,7 +7,8 @@ Purpose of the app:
 - Debug and Inspect the Spring Boot application and Security context
 - Sharing and getting constructive feedback
 - Redis as stateful services with Spring Boot (Work in Progress)
-
+- It uses Ionic framework to handle multi browser platforms and can be build as android or IOS App
+<br>
 ## Demo APP Sequence Diagram
 <p align="center">
   <img src="/pic/spring-boot-keycloak-mysql.jpg" target="_blank">

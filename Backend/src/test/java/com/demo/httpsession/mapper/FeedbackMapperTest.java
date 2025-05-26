@@ -6,14 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.demo.httpsession.model.bean.FeedbackDTO;
-import com.demo.httpsession.model.bean.UserDTO;
-import com.demo.httpsession.model.bean.UserHistoryDTO;
-import com.demo.httpsession.model.entity.FeedbackEntity;
-import com.demo.httpsession.model.entity.UserEntity;
-import com.demo.httpsession.model.entity.UserHistoryEntity;
-import com.demo.httpsession.model.entity.mapper.FeedbackSMapper;
-import com.demo.httpsession.model.entity.mapper.UserSMapper;
+import com.demo.keycloak.model.bean.FeedbackDTO;
+import com.demo.keycloak.model.bean.UserDTO;
+import com.demo.keycloak.model.entity.FeedbackEntity;
+import com.demo.keycloak.model.entity.UserEntity;
+import com.demo.keycloak.model.entity.mapper.FeedbackSMapper;
 
 @SpringBootTest
 class FeedbackMapperTest {

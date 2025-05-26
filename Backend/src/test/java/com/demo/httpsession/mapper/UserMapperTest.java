@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.demo.httpsession.model.bean.UserDTO;
-import com.demo.httpsession.model.entity.UserEntity;
-import com.demo.httpsession.model.entity.mapper.UserSMapper;
+import com.demo.keycloak.model.bean.UserDTO;
+import com.demo.keycloak.model.entity.UserEntity;
+import com.demo.keycloak.model.entity.mapper.UserSMapper;
 
 @SpringBootTest
 class UserMapperTest {

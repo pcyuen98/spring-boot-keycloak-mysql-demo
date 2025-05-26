@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.demo.httpsession.model.bean.UserDTO;
-import com.demo.httpsession.model.bean.UserHistoryDTO;
-import com.demo.httpsession.model.entity.UserEntity;
-import com.demo.httpsession.model.entity.UserHistoryEntity;
-import com.demo.httpsession.model.entity.mapper.UserHistorySMapper;
+import com.demo.keycloak.model.bean.UserDTO;
+import com.demo.keycloak.model.bean.UserHistoryDTO;
+import com.demo.keycloak.model.entity.UserEntity;
+import com.demo.keycloak.model.entity.UserHistoryEntity;
+import com.demo.keycloak.model.entity.mapper.UserHistorySMapper;
 
 @SpringBootTest
 class UserHistoryMapperTest {
