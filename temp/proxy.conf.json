@@ -1,6 +1,0 @@
-{
-    "/finder/*": {
-      "target": "http://219.93.129.18:8880",
-      "secure": false
-    }
-}
