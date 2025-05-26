@@ -6,7 +6,13 @@ This application allows:
 - Restful GET HTTP to get a distance between 2 postcodes
 - Restful POST HTTP to save a postcode, latitude and longitude 
 
-***Note:** this is a personal practice project and I do not allow its distribution.*  
+## Demo APP Sequence Diagram
+<b>HTTP GET login</b>
+<p align="center">
+  <img src="/pic/spring-boot-keycloak-mysql.jpg">
+</p>
+
+***Note:** Refer to the user guide below for more information*  
 
 [User Guide](https://github.com/pcyuen98/spring-boot-keycloak-mysql-demo/blob/main/Frontend/src/assets/doc/)
 
