@@ -7,7 +7,6 @@ This application allows:
 - Restful POST HTTP to save a postcode, latitude and longitude 
 
 ## Demo APP Sequence Diagram
-<b>HTTP GET login</b>
 <p align="center">
   <img src="/pic/spring-boot-keycloak-mysql.jpg">
 </p>
