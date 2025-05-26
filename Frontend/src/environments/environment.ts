@@ -7,7 +7,7 @@ export const environment = {
 
   keycloakURL: "http://localhost:7080",
   realm: "keycloak",
-  clientID: "angularfrontlocal",
+  clientID: "angularfront",
   redirect: "http://localhost:4200",
 
   spring_boot_test_url: "http://localhost:7090/demo/test/v1",

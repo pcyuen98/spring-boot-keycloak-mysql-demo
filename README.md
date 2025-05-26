@@ -7,6 +7,11 @@ This application allows:
 - Restful POST HTTP to save a postcode, latitude and longitude 
 
 ***Note:** this is a personal practice project and I do not allow its distribution.*  
+
+[User Guide](https://github.com/pcyuen98/spring-boot-keycloak-mysql-demo/blob/main/Frontend/src/assets/doc/spring-boot-keycloak-mysql-demo-guide.docx)
+
+
+
 ## API Docs
 To view the API documentation you must first [deploy](#deployment) the application and then enter one of the following paths in your browser:
 - http://localhost:8090/swagger-ui.html (To view the docs with a graphical interface)
