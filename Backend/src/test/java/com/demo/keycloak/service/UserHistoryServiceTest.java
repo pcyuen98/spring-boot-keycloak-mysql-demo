@@ -1,4 +1,4 @@
-package com.demo.httpsession;
+package com.demo.keycloak.service;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.demo.httpsession.model.entity.UserDTO;
-import com.demo.httpsession.model.entity.UserEntity;
-import com.demo.httpsession.model.entity.UserHistoryDTO;
-import com.demo.httpsession.model.entity.UserMapper;
-import com.demo.httpsession.model.service.UserHistoryService;
-import com.demo.httpsession.model.service.UserService;
+import com.demo.keycloak.model.bean.UserDTO;
+import com.demo.keycloak.model.bean.UserHistoryDTO;
+import com.demo.keycloak.model.entity.UserEntity;
+import com.demo.keycloak.model.entity.mapper.UserSMapper;
+import com.demo.keycloak.model.service.UserHistoryService;
+import com.demo.keycloak.model.service.UserService;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -26,7 +26,7 @@ class UserHistoryServiceTest {
 	private UserService userService;
     
     @Autowired
-    private UserMapper userMapper;
+    private UserSMapper userSMapper;
     
 	@Test
 	@DisplayName("Save UserHistory")
@@ -36,13 +36,16 @@ class UserHistoryServiceTest {
 		userEntity.setSurname("surname");
 		userEntity.setUsername("username1");
 		
-		UserDTO userDTO = userService.save(userMapper.toDto(userEntity));
+		UserDTO userDTO = userService.save(userSMapper.toDto(userEntity));
 		UserHistoryDTO userHistoryDTO = new UserHistoryDTO();
 		userHistoryDTO.setUserDTO(userDTO);
 		userHistoryDTO = userHistoryService.save(userHistoryDTO);
-
-		// Assert
-		//assertNotNull(userHistoryDTO.getUserDTO());
+		
+		assertNotNull(userHistoryDTO.getUserDTO());
+		assertNotNull(userHistoryDTO.getUserDTO().getId());
+		
+		userDTO = userService.findByUsername(userHistoryDTO.getUserDTO().getUsername());
+		assertNotNull(userDTO);
 	}
 
 	@Test
@@ -53,10 +56,15 @@ class UserHistoryServiceTest {
 		userEntity.setSurname("surname updateUserTest");
 		userEntity.setUsername("username2");
 		
-		UserDTO user = userService.save(userMapper.toDto(userEntity));
+		UserDTO user = userService.save(userSMapper.toDto(userEntity));
 		
 		user = userService.updateUser(user);
 		assertNotNull(user);
+		
+		UserDTO userDTO = userService.findByUsername(user.getUsername());
+		assertNotNull(userDTO);
+		assertNotNull(userDTO.getLastUpdatedDate());
 
 	}
+
 }

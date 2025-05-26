@@ -1,4 +1,4 @@
-package com.demo.httpsession.mapper;
+package com.demo.keycloak.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
