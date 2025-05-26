@@ -1,0 +1,38 @@
+.custom-card {
+  margin: 0 !important; /* This removes margin between cards */
+  padding: 0 !important; /* This removes default card padding */
+}
+
+/* Adjustments for the header to reduce gap */
+.tight-header {
+  /* Ensure padding is minimal at the bottom */
+  padding: 4px 8px 0px 8px !important; /* Reduced bottom padding */
+  margin-bottom: 0 !important; /* Remove any default margin below header */
+}
+
+/* To ensure buttons within ion-col are tightly packed, remove col padding */
+.token-info-col {
+  --padding-start: 1px !important; /* Minimal horizontal padding for columns */
+  --padding-end: 1px !important;   /* Minimal horizontal padding for columns */
+  --ion-grid-column-padding: 0 !important; /* Important for removing default column spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Your existing button styles - ensuring margins are small or 0 */
+.app-button {
+  font-size: 10px;
+  margin: 3px; /* Small margin around buttons for slight separation */
+}
+.centered-title {
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.small-title {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0;
+}
