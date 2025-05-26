@@ -8,7 +8,7 @@ This application allows:
 
 ## Demo APP Sequence Diagram
 <p align="center">
-  <img src="/pic/spring-boot-keycloak-mysql.jpg">
+  <img src="/pic/spring-boot-keycloak-mysql.jpg" target="_blank">
 </p>
 
 ***Note:** Refer to the user guide below for more information*  
