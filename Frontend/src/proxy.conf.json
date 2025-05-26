@@ -1,0 +1,10 @@
+{
+    "/finder/*": {
+      "target": "219.93.129.18:8089",
+      "secure": false
+    },
+    "/finder/*": {
+        "target": "219.93.129.18:8880",
+        "secure": false
+      }
+}
