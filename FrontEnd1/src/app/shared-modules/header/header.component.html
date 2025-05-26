@@ -1,0 +1,28 @@
+<ion-header>
+  <div class="footer-dark ion-padding" style="background-color: #1f1f1f; color: #ffffff;">
+    <div class="container">
+
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-align-items-center">
+          <ion-col>
+            <div class="ion-text-center">
+              <h2 class="footer-title">Keycloak DEMO APP</h2>
+              <small>Redis, Angular and Spring Boot</small><br>
+
+              <span *ngIf="isLogin() && getUserCookies()">
+                <hello [name]="getUserCookies().username" [moduleName]="moduleName"></hello>
+              </span>
+              <b *ngIf="!isLogin()" (click)="login()" class="footer-link clickable logout-green">&nbsp;Login&nbsp;</b>
+            </div>
+          </ion-col>
+          <ion-col *ngIf="isLogin()" size="12">
+            <div class="ion-text-center">
+              <app-menu></app-menu>
+              <b (click)="logout()" class="footer-link clickable logout-green">Logout&nbsp;</b>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-header>
