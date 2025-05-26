@@ -8,7 +8,7 @@ This application allows:
 
 ***Note:** this is a personal practice project and I do not allow its distribution.*  
 
-[User Guide](https://github.com/pcyuen98/spring-boot-keycloak-mysql-demo/blob/main/Frontend/src/assets/doc/spring-boot-keycloak-mysql-demo-guide.docx)
+[User Guide](https://github.com/pcyuen98/spring-boot-keycloak-mysql-demo/blob/main/Frontend/src/assets/doc/)
 
 
 
