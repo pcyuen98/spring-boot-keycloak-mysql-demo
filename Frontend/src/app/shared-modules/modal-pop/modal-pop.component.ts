@@ -26,32 +26,35 @@ export class ModalPopComponent {
     private modalCtrl: ModalController,
     private commonService: CommonService,
     private alertService: AlertService,
-
   ) { }
 
   ngOnInit() {
   }
-async captureHighlight(): Promise<void> {
-  const selection = window.getSelection();
-  const selectedText = selection?.toString().trim() || '';
 
-  if (!selectedText) return;
-
-  this.isLoading = true;
-
-  try {
-    if (this.isQuickAsk) {
-      const result = await this.alertService.displayMsgBox("Ask AI with the selected text?");
-      if (result === 'ok') {
-        await this.askAIComponent.submit(selectedText);
-      }
-    } else if (selectedText.length > 2) {
-      this.copyIntoClipBoard(selectedText);
-    }
-  } finally {
-    this.isLoading = false;
+  isDesktop() {
+    return this.commonService.isDesktop()
   }
-}
+  async captureHighlight(): Promise<void> {
+    const selection = window.getSelection();
+    const selectedText = selection?.toString().trim() || '';
+
+    if (!selectedText) return;
+
+    this.isLoading = true;
+
+    try {
+      if (this.isQuickAsk) {
+        const result = await this.alertService.displayMsgBox("Ask AI with the selected text?");
+        if (result === 'ok') {
+          await this.askAIComponent.submit(selectedText);
+        }
+      } else if (selectedText.length > 2) {
+        this.copyIntoClipBoard(selectedText);
+      }
+    } finally {
+      this.isLoading = false;
+    }
+  }
 
 
   copyIntoClipBoard(text: string) {

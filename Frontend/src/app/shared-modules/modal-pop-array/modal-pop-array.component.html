@@ -16,7 +16,9 @@
   <ask-ai #askAIComponent></ask-ai>
   <span *ngIf="!isLoading" style="display: flex; align-items: center; gap: 6px;">
     <b><small>ℹ️ Highlight any text to ask AI quickly</small></b>
-    <input *ngIf="!isLoading" type="checkbox" [(ngModel)]="isQuickAsk" />
+    <ion-checkbox *ngIf="!isLoading && isDesktop()" slot="start" [(ngModel)]="isQuickAsk"
+      style="transform: scale(0.8); --checkbox-size: 16px;">
+    </ion-checkbox>
   </span>
 </ion-item>
 <ion-content (mouseup)="captureHighlight()" class="ion-padding">
