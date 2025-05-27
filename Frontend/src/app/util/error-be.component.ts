@@ -7,7 +7,7 @@ import { ErrorApp } from '../models/error-app';
 
 
 @Component({
-  selector: 'error-be',
+  selector: 'app-util-error-be',
   template: `
 
   <ion-header>
@@ -32,7 +32,7 @@ import { ErrorApp } from '../models/error-app';
     <li>Please try again later</li>
   </ul>
 </div>
-  <b (click)="viewError()" class="font-error-link">&nbsp;View Details&nbsp;</b> 
+  <b (click)="viewError()" class="font-error-link">&nbsp;View Details&nbsp;</b>
 
   `,
   styles: [`h1 { font-family: Lato; }`]
@@ -54,10 +54,6 @@ export class ErrorBEComponent {
 
   close() {
     this.pageBaseComponent.clearErrorMessage()
-  }
-
-  getGlobalErrorTest() {
-    console.log(this)
   }
 
 }

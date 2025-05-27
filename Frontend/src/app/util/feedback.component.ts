@@ -1,4 +1,4 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { AlertService } from 'src/app/service/AlertService';
@@ -9,9 +9,10 @@ import { User } from '../models/user';
 import { GlobalConstants } from 'src/environments/GlobalConstants';
 import { FormsModule } from '@angular/forms';
 import { CommonHTTPService } from '../service/CommonHTTPService';
+// @ts-ignore
 @Component({
-    selector: 'app-feedback',
-    template: `
+  selector: 'app-feedback',
+  template: `
     <ion-spinner *ngIf="this.isLoading" size="large" name="crescent"></ion-spinner>
 <ion-content *ngIf="!isLoading">
 
@@ -59,47 +60,47 @@ import { CommonHTTPService } from '../service/CommonHTTPService';
   </ion-item>
 
 </ion-content>  `,
-    styles: [`
+  styles: [`
   `]
 })
 export class FeedbackComponent {
-    feedbackMsg: string | undefined;
-    feedbackOption: any | undefined;
-    isLoading: boolean = false
-    constructor(
-        private userService: UserService,
-        private alertService: AlertService,
-        private CommonHTTPService: CommonHTTPService
-    ) { }
+  feedbackMsg: string | undefined;
+  feedbackOption: any | undefined;
+  isLoading: boolean = false
+  constructor(
+    private userService: UserService,
+    private alertService: AlertService,
+    private CommonHTTPService: CommonHTTPService
+  ) { }
 
-    clearFeedback() {
-        this.feedbackMsg = undefined;
-        this.feedbackOption = undefined;
-    }
+  clearFeedback() {
+    this.feedbackMsg = undefined;
+    this.feedbackOption = undefined;
+  }
 
-    onSelectChange(e: any) {
-        this.feedbackOption = e.detail.value
-    }
-onSearchInput(event: KeyboardEvent) {
+  onSelectChange(e: any) {
+    this.feedbackOption = e.detail.value
+  }
+  onSearchInput(event: KeyboardEvent) {
     const input = this.feedbackMsg?.trim();
-    
-    if (event.key === 'Enter' && input) {
-        this.updateFeedback();
-    }
-}
 
-confirm() {
+    if (event.key === 'Enter' && input) {
+      this.updateFeedback().then(() => {});
+    }
+  }
+
+  confirm() {
     const inputOption = this.feedbackOption?.trim();
     const inputMsg = this.feedbackMsg?.trim();
 
     if (inputOption || inputMsg) {
-        this.updateFeedback();
+      this.updateFeedback().then(() => {} );
     } else {
-        this.alertService.displayMsgBox("Please enter some feedback");
+      this.alertService.displayMsgBox("Please enter some feedback").then(() => {});
     }
-}
+  }
 
-async updateFeedback() {
+  async updateFeedback() {
     this.isLoading = true;
 
     const feedbackMsg = this.feedbackMsg?.trim() || "";
@@ -107,12 +108,11 @@ async updateFeedback() {
 
     // Validate input
     if (!feedbackMsg && !feedbackOption) {
-        await this.alertService.displayMsgBox("Please enter some feedback");
-        this.isLoading = false;
-        return;
+      await this.alertService.displayMsgBox("Please enter some feedback");
+      this.isLoading = false;
+      return;
     }
 
-    // Construct feedback object
     const feedback = new Feedback();
     feedback.feedbackType = 2;
     feedback.msg = `${feedbackOption}. ${feedbackMsg}`.trim();
@@ -124,31 +124,29 @@ async updateFeedback() {
 
     await this.updateFeedbackSpringboot(feedback);
     this.isLoading = false;
-}
+  }
 
 
-    async updateFeedbackSpringboot(feedback: Feedback) {
+  async updateFeedbackSpringboot(feedback: Feedback) {
 
-        const headers = { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' };
+    let user: User = this.userService.getUserCookie()
 
-        let user: User = this.userService.getUserCookie()
-
-        if (user != undefined) {
-            feedback.userDTO= user
-        }
-
-        const data = await this.CommonHTTPService.putResource(
-            `${GlobalConstants.spring_boot_url}/feedback`, feedback
-        );
-
-        alert('Thank you for your feedback!');
-
+    if (user != undefined) {
+      feedback.userDTO = user
     }
+
+    const data = await this.CommonHTTPService.putResource(
+      `${GlobalConstants.spring_boot_url}/feedback`, feedback
+    );
+
+    alert('Thank you for your feedback!');
+
+  }
 }
 
 @NgModule({
-    declarations: [FeedbackComponent],
-    imports: [CommonModule, IonicModule, FormsModule],
-    exports: [FeedbackComponent]
+  declarations: [FeedbackComponent],
+  imports: [CommonModule, IonicModule, FormsModule],
+  exports: [FeedbackComponent]
 })
 export class FeedbackModule { }

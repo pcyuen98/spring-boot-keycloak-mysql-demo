@@ -20,6 +20,6 @@
   </div>
 
   <ion-card *ngIf="getGlobalError()">
-    <error-be #errorBEComponent [errorApp]="getGlobalError()" [pageBaseComponent]="this"></error-be>
+    <app-util-error-be #errorBEComponent [errorApp]="getGlobalError()" [pageBaseComponent]="this"></app-util-error-be>
   </ion-card>
 </ion-footer>

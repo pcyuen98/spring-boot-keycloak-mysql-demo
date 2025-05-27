@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
 
@@ -11,8 +11,8 @@ import { FooterModule } from '../shared-modules/footer/footer.module';
 
 
 @NgModule({
-  imports: [ CommonModule, IonicModule, HeaderModule, HomePageRoutingModule, ReactiveFormsModule, 
-    FooterModule
+  imports: [CommonModule, IonicModule, HeaderModule, HomePageRoutingModule, ReactiveFormsModule,
+    FooterModule, NgOptimizedImage
   ],
   declarations: [ HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

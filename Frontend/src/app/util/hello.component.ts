@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'hello',
+  selector: 'app-util-hello',
   template: `
     Welcome <b><span class="module-text">{{ name }} </span></b>
     <!-- unused b><span class="module-text">{{ moduleName }} Module</span></b-->
@@ -21,9 +21,6 @@ export class HelloComponent {
   @Input() name: string;
   @Input() moduleName: string;
 
-  public returnSomething() {
-    return "ok";
-  }
 }
 
 @NgModule({

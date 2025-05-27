@@ -6,7 +6,7 @@ import { CommonService } from '../service/CommonService';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-    selector: 'ask-ai',
+    selector: 'app-util-ask-ai',
     template: `
   <span *ngIf="this.isLoading" >
    <b><small> Checking with AI. Wait a moment </small></b>
@@ -41,7 +41,7 @@ export class AskAIComponent {
         return this.askAIGeneralQues(payload)
     }
 
-    
+
   trim(value: string, maxLength: number = 500): string {
     if (!value) return '';
     return value.length > maxLength ? value.slice(0, maxLength) + '...' : value;
@@ -51,7 +51,7 @@ export class AskAIComponent {
         let ques = "fill in the blank, do not change the json elements and return in this json format only for python processing " + JSON.stringify(questionAIPayload)
         ques = this.trim(ques)
         const data = await this.commonHTTPService.askAIGeneralQues(ques);
-        this.commonService.openSlideAIModal(data).then(r => { });
+        this.commonService.openSlideAIModal(data).then(() => { });
         this.isLoading = false
         //alert(JSON.stringify(data))
     }

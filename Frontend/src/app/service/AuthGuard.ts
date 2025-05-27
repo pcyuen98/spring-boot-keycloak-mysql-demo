@@ -22,11 +22,11 @@ export class AuthGuard implements CanActivate {
         if (isLoggedIn) {
             isUserHasPermission = this.userService.hasRole(roles)
         }
-        
+
         if (!isLoggedIn || !isUserHasPermission) {
             alert('Login not found or unauthorized access')
-            
-            this.router.navigate(['/home']);
+
+            await this.router.navigate(['/home']);
             return false
         }
 

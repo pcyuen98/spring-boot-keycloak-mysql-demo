@@ -2,7 +2,6 @@ import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GlobalConstants } from 'src/environments/GlobalConstants';
 import { CommonHTTPService } from './CommonHTTPService';
-import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'

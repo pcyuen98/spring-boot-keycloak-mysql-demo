@@ -13,7 +13,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-item>
-  <ask-ai #askAIComponent></ask-ai>
+  <app-util-ask-ai #askAIComponent></app-util-ask-ai>
   <span *ngIf="!isLoading && isDesktop()  " style="display: flex; align-items: center; gap: 6px;">
     <b><small>ℹ️ Highlight any text to ask AI quickly</small></b>
     <ion-checkbox *ngIf="!isLoading" slot="start" [(ngModel)]="isQuickAsk"

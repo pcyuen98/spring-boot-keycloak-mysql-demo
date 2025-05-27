@@ -32,9 +32,6 @@ export class ModalSliderComponent {
         private modalCtrl: ModalController,
     ) { }
 
-    ngOnInit() {
-    }
-
     cancel() {
         return this.modalCtrl.dismiss(null, 'cancel');
     }

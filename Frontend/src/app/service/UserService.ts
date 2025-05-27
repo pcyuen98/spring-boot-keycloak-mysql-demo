@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cookie } from 'ng2-cookies';
 import { User } from '../models/user';
-import { CommonService } from './CommonService';
 
 @Injectable({
     providedIn: 'root'
@@ -31,9 +30,7 @@ export class UserService {
     public getUserCookie(): User {
         try {
             const userCookie = Cookie.get('user');
-            const user: User = JSON.parse(userCookie);
-
-            return user;
+            return JSON.parse(userCookie);
         } catch {
             return new User();
         }

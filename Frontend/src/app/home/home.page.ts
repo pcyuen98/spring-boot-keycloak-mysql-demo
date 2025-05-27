@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { PageBaseComponent } from '../util/page-base.component';
 
 @Component({
@@ -12,12 +12,6 @@ export class HomePage extends PageBaseComponent{
      ) {
     super(injector);
   }
-  ngOnInit() {}
-
-  getGlobalErrorTest() {
-    let test = this.getGlobalError()
-    console.log(this)
-}
 
 
 }

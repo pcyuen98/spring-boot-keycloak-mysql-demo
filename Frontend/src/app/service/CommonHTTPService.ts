@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom, retry } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { GlobalConstants } from 'src/environments/GlobalConstants';
 import { Cookie } from 'ng2-cookies';
 import { CommonService } from './CommonService';
@@ -47,7 +47,7 @@ export class CommonHTTPService {
   public async handleRequest(title: string, message: string, url: string): Promise<void> {
     try {
       const data = await this.getResource(url);
-      this.commonService.openPopModal(title + " Successful", message, data);
+      await this.commonService.openPopModal(title + " Successful", message, data);
     } catch (error) {
       this.handleHttpError(error, 'POST', url);
       throw error;
@@ -60,9 +60,9 @@ export class CommonHTTPService {
   public async handlePostRequest(title: string, message: string, url: string, body: any): Promise<void> {
     try {
       const data = await this.putResource(url, body)
-      this.commonService.openPopModal(title + " Successful", message, data);
+      await this.commonService.openPopModal(title + " Successful", message, data);
     } catch (error) {
-      this.commonService.openPopModal(`Error ${title}`, 'Error Details', error);
+      await this.commonService.openPopModal(`Error ${title}`, 'Error Details', error);
     }
   }
 

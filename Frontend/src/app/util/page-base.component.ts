@@ -1,4 +1,4 @@
-import { Component, Injector, Input, NgModule, ViewChild } from '@angular/core';
+import { Component, Injector, NgModule, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import {
@@ -69,7 +69,7 @@ export class PageBaseComponent {
             return;
         }
 
-        this.commonService.openSlideModal().then(r => { });
+        this.commonService.openSlideModal().then(() => { });
     }
 
     getGlobalError(): any | undefined {

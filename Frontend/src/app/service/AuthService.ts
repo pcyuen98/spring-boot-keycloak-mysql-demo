@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { GlobalConstants } from 'src/environments/GlobalConstants';
@@ -35,8 +35,7 @@ export class AuthService {
   ) { }
 
   login(): void {
-    const loginUrl = `${this.authUrl}?response_type=code&scope=openid%20profile&client_id=${this.clientId}&redirect_uri=${this.redirectUri}`;
-    window.location.href = loginUrl;
+    window.location.href = `${this.authUrl}?response_type=code&scope=openid%20profile&client_id=${this.clientId}&redirect_uri=${this.redirectUri}`;
   }
 
   retrieveCodeFromRedirectedKeyCloak(code: string): void {
@@ -73,7 +72,7 @@ export class AuthService {
     }
     else {
          const isFromMenu: boolean = this.route.snapshot.paramMap.get('redirect') === 'menu';
-      
+
           // only redirect if from login
           // this to shortcut redirection based on different login
           if (!isFromMenu) {
@@ -145,8 +144,7 @@ export class AuthService {
       Cookie.delete(key, '/');
     });
 
-    const url = `${this.logoutUrl}?id_token_hint=${token}&post_logout_redirect_uri=${this.redirectUri}`;
-    window.location.href = url;
+    window.location.href = `${this.logoutUrl}?id_token_hint=${token}&post_logout_redirect_uri=${this.redirectUri}`;
   }
 
 }
