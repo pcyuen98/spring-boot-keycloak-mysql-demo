@@ -84,7 +84,7 @@ export class CommonHTTPService {
       'Restful HTTP Header',
       'Header Details for HTTP Restful services',
       this.getHeadersAsObject()
-    );
+    ).then(() => {});
   }
 
   /**

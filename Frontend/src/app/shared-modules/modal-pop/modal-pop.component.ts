@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 
 import { ModalController } from '@ionic/angular';
 import { CommonService } from '../../service/CommonService';
@@ -27,9 +27,6 @@ export class ModalPopComponent {
     private commonService: CommonService,
     private alertService: AlertService,
   ) { }
-
-  ngOnInit() {
-  }
 
   isDesktop() {
     return this.commonService.isDesktop()
@@ -72,8 +69,8 @@ export class ModalPopComponent {
     alert("Copied to clipboard: " + text);
   }
 
-  asiAI() {
-    this.askAIComponent.submit(this.data)
+  async asiAI() {
+    await this.askAIComponent.submit(this.data)
   }
 
   flatten() {
@@ -81,7 +78,7 @@ export class ModalPopComponent {
   }
 
   close() {
-    this.modalCtrl.dismiss();
+    this.modalCtrl.dismiss().then(() => {});
   }
 
 }

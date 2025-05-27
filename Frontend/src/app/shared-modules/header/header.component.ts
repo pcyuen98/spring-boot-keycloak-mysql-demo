@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CommonService } from '../../service/CommonService';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../service/UserService';
 import { AuthService } from '../../service/AuthService';
@@ -11,11 +10,9 @@ import { AuthService } from '../../service/AuthService';
 })
 export class HeaderComponent implements OnInit {
   constructor(
-    private commonService: CommonService,
     private userService: UserService,
     private authService: AuthService,
   ) { }
-
   ngOnInit(): void {
   }
 
@@ -35,10 +32,6 @@ export class HeaderComponent implements OnInit {
 
   getUserCookies(): User {
     return this.userService.getUserCookie();
-  }
-
-  isDesktop(): boolean {
-    return this.commonService.isDesktop();
   }
 
 

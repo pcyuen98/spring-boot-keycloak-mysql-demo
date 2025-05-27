@@ -8,11 +8,12 @@ import { PageBaseComponent } from 'src/app/util/page-base.component';
   styleUrls: ['button-handler.component.css'],
 })
 export class ButtonHandlerComponent implements OnInit {
+  ngOnInit(): void {
+  }
+
   @Input() actions: Action[] = [];
   @Input() title = '';
   @Input() pageBaseComponent!: PageBaseComponent;
-
-  ngOnInit(): void {}
 
   getButtonColor(action: Action): string {
     return action.color ?? 'primary';

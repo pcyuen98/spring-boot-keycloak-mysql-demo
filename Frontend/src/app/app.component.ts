@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AuthService } from './service/AuthService';
-import { Router } from '@angular/router';
-import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +12,7 @@ export class AppComponent {
     public authService: AuthService) {
     this.retrieveCodeFromRedirectedKeyCloak();
   }
-  public async retrieveCodeFromRedirectedKeyCloak() {
+  public retrieveCodeFromRedirectedKeyCloak() {
 
     let i = window.location.href.indexOf('code');
 

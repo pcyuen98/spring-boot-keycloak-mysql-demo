@@ -49,7 +49,8 @@ export class ErrorBEComponent {
   ) { }
 
   public viewError() {
-    this.commonService.openPopModal(this.errorApp.error.exception, this.errorApp.error.message, this.errorApp.error)
+    this.commonService.openPopModal(this.errorApp.error.exception,
+      this.errorApp.error.message, this.errorApp.error).then(() => {});
   }
 
   close() {

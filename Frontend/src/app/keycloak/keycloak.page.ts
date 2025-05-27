@@ -1,4 +1,4 @@
-import { Component, Injector, Input } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { PageBaseComponent } from '../util/page-base.component';
 import { Action } from '../models/action';
 import { KeyCloakService } from '../service/KeyCloakService';
@@ -9,7 +9,7 @@ import { KeyCloakService } from '../service/KeyCloakService';
 })
 export class KeycloakPage extends PageBaseComponent {
 
-  constructor(injector: Injector,   
+  constructor(injector: Injector,
     private keyCloakService: KeyCloakService
 ) {
     super(injector);
@@ -56,7 +56,7 @@ export class KeycloakPage extends PageBaseComponent {
       'Keycloak Login Token Details',
       'This is to check data return from keycloak server',
       tokenData
-    );
+    ).then(() => {});
   }
 
   getUserCookies(): void {
@@ -65,7 +65,7 @@ export class KeycloakPage extends PageBaseComponent {
       'User Cookies Details',
       'Cookies is stored upon login',
       userCookie
-    );
+    ).then(() => {});
   }
 
   getAllCookies(): void {
@@ -74,7 +74,7 @@ export class KeycloakPage extends PageBaseComponent {
       'All Stored Cookies Details',
       'This is to verify cookies being stored upon login',
       cookies
-    );
+    ).then(() => {});
   }
 
   async testGeneralError(): Promise<void> {

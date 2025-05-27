@@ -55,14 +55,14 @@ export class MenuComponent {
 
         // Use the Router service to navigate.
         if (item.params) {
-            this.router.navigate([item.path, item.params]); // Navigate with parameters
+            this.router.navigate([item.path, item.params]).then(() => {}); // Navigate with parameters
         } else if (item.queryParams) {
             this.router.navigate([item.path], {
                 queryParams: item.queryParams,
-            }); // Navigate with query parameters
+            }).then(() => {}); // Navigate with query parameters
         } else {
             this.hasRole(item.role)
-            this.router.navigate([item.path]); // Navigate without extra parameters
+            this.router.navigate([item.path]).then(() => {}); // Navigate without extra parameters
         }
     }
 }

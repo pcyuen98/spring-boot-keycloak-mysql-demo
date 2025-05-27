@@ -52,11 +52,16 @@ export class AuthService {
       next: async (token: any) => {
         const user: User = await this.saveToken(token);
         let result = await this.loginBE(user)
-        this.redirectToMainPage(result)
+        await this.redirectToMainPage(result)
 
       },
       error: (error: any) => {
-        this.commonService.openPopModal('Error verifying token. Logging out!', 'Error Details', error);
+        this.commonService.openPopModal('Error verifying token. Logging out!', 'Error Details', error).then(() => {
+          // Handle logic after the modal is closed/acknowledged
+          console.log('Modal closed');
+          this.logout();
+
+        });
         this.logout();
       }
     });
@@ -71,19 +76,19 @@ export class AuthService {
       }
     }
     else {
-         const isFromMenu: boolean = this.route.snapshot.paramMap.get('redirect') === 'menu';
+      const isFromMenu: boolean = this.route.snapshot.paramMap.get('redirect') === 'menu';
 
-          // only redirect if from login
-          // this to shortcut redirection based on different login
-          if (!isFromMenu) {
-            if (this.userService.hasRole(Role.Redis)) {
-              this.router.navigate(['/redis']);
-            } else if (this.userService.hasRole(Role.Keycloak)) {
-              this.router.navigate(['/keycloak']);
-            }else {
-              this.router.navigate(['/home']);
-            }
-          }
+      // only redirect if from login
+      // this to shortcut redirection based on different login
+      if (!isFromMenu) {
+        if (this.userService.hasRole(Role.Redis)) {
+          await this.router.navigate(['/redis']);
+        } else if (this.userService.hasRole(Role.Keycloak)) {
+          await this.router.navigate(['/keycloak']);
+        } else {
+          await this.router.navigate(['/home']);
+        }
+      }
     }
   }
 

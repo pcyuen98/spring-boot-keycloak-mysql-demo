@@ -57,14 +57,14 @@ export class CommonService {
     /**
      * Opens a modal with key-value data display
      */
-    public async openPopModal(title: string, message: string, data: any): Promise<void> {
-        await this.createModal(ModalPopComponent, title, message, data, 'wide-modal');
+    public async openPopModal(title: string, message: string, data: any) {
+       await this.createModal(ModalPopComponent, title, message, data, 'wide-modal');
     }
 
     /**
      * Opens a modal that shows array-based data
      */
-    public async openPopArrayModal(title: string, message: string, data: any): Promise<void> {
+    public async openPopArrayModal(title: string, message: string, data: any) {
         await this.createModal(ModalPopArrayComponent, title, message, data);
     }
 

@@ -40,11 +40,6 @@ th:nth-child(2), td:nth-child(2) {
 
 /* Continue for other columns as needed */
 
-.wide-modal {
-  --width: 90vw;
-  --max-width: 800px;
-}
-
 ion-button {
   margin-right: 8px;
 }
@@ -73,4 +68,3 @@ ion-icon {
   border-radius: 4px;
   font-family: monospace;
 }
- 

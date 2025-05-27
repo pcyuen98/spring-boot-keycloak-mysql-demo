@@ -2,7 +2,6 @@ import {
   Component,
   Injector,
 } from '@angular/core';
-import { ModuleName } from '../models/module.name';
 import { PageBaseComponent } from '../util/page-base.component';
 
 @Component({
