@@ -7,8 +7,6 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-    constructor() { }
-
     /**
      * Set or update the user cookie with merged values.
      */

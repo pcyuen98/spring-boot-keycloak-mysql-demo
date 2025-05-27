@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Action } from 'src/app/models/action';
 import { PageBaseComponent } from 'src/app/util/page-base.component';
 
@@ -7,9 +7,7 @@ import { PageBaseComponent } from 'src/app/util/page-base.component';
   templateUrl: 'button-handler.component.html',
   styleUrls: ['button-handler.component.css'],
 })
-export class ButtonHandlerComponent implements OnInit {
-  ngOnInit(): void {
-  }
+export class ButtonHandlerComponent {
 
   @Input() actions: Action[] = [];
   @Input() title = '';
