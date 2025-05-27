@@ -2,6 +2,6 @@
 /.apt_generated/
 /.apt_generated_tests/
 /logs/
-/.settings
-/.classpath
-./project
+/.settings/
+.classpath
+.project
