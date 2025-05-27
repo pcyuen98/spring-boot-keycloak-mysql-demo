@@ -74,5 +74,5 @@ android/
 .package-lock.json
 .eslintrc.json
 .editorconfig
-
+.scannerwork
 /src/environments/environment.prod.ts
