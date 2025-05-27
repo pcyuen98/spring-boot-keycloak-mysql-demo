@@ -24,8 +24,6 @@ class UserHistoryRepositoryTest {
     @Autowired
     private IUserRepository iUserRepository;
     
-    @Test
-    @DisplayName("Save UserHistory")
     UserHistoryEntity saveUserHistory() {
         // Arrange
         UserEntity userEntity = new UserEntity();
