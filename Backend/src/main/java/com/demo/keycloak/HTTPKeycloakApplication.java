@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HTTPSessionApplication {
+public class HTTPKeycloakApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HTTPSessionApplication.class, args);
+        SpringApplication.run(HTTPKeycloakApplication.class, args);
     }
 
 }
