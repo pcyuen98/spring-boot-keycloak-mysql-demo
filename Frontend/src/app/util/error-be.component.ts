@@ -26,8 +26,9 @@ import { ErrorApp } from '../models/error-app';
 
   <div   class="error-box" style="color: red; border: 1px solid red; padding: 10px; border-radius: 5px;">
   <ul *ngIf="errorApp">
-    <li>Error Message: {{errorApp.appMessage}}. {{errorApp.error.message}}. </li>
+    <li>Error Message: {{errorApp.appMessage}}. </li>
     <li>Caused: {{errorApp.caused}}</li>
+    <li>Code: {{errorApp.code}}</li>
     <li>Please try again later</li>
   </ul>
 </div>

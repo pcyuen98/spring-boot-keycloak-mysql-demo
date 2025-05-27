@@ -2,7 +2,6 @@ version: "3.9"
 
 services:
 
-
   keycloak: 
     build: Keycloak
     ports:
@@ -21,18 +20,6 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - ./MySQL:/docker-entrypoint-initdb.d
-
-# Backend is Disabled due to for demo purposes. Refer to the readme file on github
-#  backend: 
-#    build: /Backend
-#    depends_on:
-#      - mysql
-#    ports:
-#      - "8090:8090"
-#    links: 
-#      - mysql
-#    volumes:
-#      - ./Backend/uploads:/uploads
 
 volumes:
   mysql-data:

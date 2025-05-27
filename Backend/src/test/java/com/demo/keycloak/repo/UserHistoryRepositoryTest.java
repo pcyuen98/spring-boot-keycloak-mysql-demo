@@ -1,4 +1,4 @@
-package com.demo.keycloak;
+package com.demo.keycloak.repo;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

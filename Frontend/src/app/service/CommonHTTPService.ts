@@ -5,6 +5,7 @@ import { GlobalConstants } from 'src/environments/GlobalConstants';
 import { Cookie } from 'ng2-cookies';
 import { CommonService } from './CommonService';
 import { UserService } from './UserService';
+import { ErrorService } from './ErrorService';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class CommonHTTPService {
   constructor(
     private http: HttpClient,
     private commonService: CommonService,
-    private userService: UserService
+    private userService: UserService,
+    private errorService: ErrorService
   ) { }
 
   /**
@@ -47,7 +49,8 @@ export class CommonHTTPService {
       const data = await this.getResource(url);
       this.commonService.openPopModal(title + " Successful", message, data);
     } catch (error) {
-      this.commonService.openPopModal(`Error ${title}`, 'Error Details', error);
+      this.handleHttpError(error, 'POST', url);
+      throw error;
     }
   }
 
@@ -127,6 +130,7 @@ export class CommonHTTPService {
    * Logs errors for debugging purposes
    */
   private handleHttpError(error: any, method: string, url: string): void {
+    this.errorService.handleError("HTTP Error", "Backend", error)
     if (error instanceof HttpErrorResponse) {
       console.error(`HTTP ${method} Error on ${url}:`, error.status, error.message);
     } else {

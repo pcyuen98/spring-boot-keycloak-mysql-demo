@@ -2,15 +2,13 @@ import { Injectable } from "@angular/core";
 import { GlobalConstants } from "src/environments/GlobalConstants";
 import { ErrorApp } from "../models/error-app";
 
-enum HttpErrorCodes {
-  BadRequest = 400,
-  Unauthorized = 401,
-  Forbidden = 403,
-  ServerError = 500,
-}
+const errorMessages: { [code: number]: string } = {
+  401: 'Unauthorized Access',
+  403: 'Access Denied or Insufficient Permission',
+};
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ErrorService {
   handleError(message: string, caused: string, error: any): void {
@@ -21,8 +19,17 @@ export class ErrorService {
     }
 
     const errorApp = new ErrorApp();
-    errorApp.appMessage = message;
+    error.statusText = errorMessages[error.status] || error.message;
+
+    if (error.statusText) {
+      errorApp.appMessage = message + ". " + error.statusText;
+    }
+    else {
+      errorApp.appMessage = message
+    }
+
     errorApp.caused = caused;
+    errorApp.code = error.status
     errorApp.error = error;
 
     GlobalConstants.globalBEError = errorApp;

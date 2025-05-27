@@ -80,7 +80,7 @@ export class KeycloakPage extends PageBaseComponent {
   async testGeneralError(): Promise<void> {
     const data = await this.keyCloakService.testGeneralError();
     if (data?.error) {
-      this.errorService.handleError("Error Simulation", "FrontEnd and Backend", data.error)
+      this.errorService.handleError("Error Simulation", "Frontend and Backend", data.error)
     }
   }
 

@@ -4,6 +4,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalPopArrayComponent } from './modal-pop-array.component';
 import { AskAIModule } from 'src/app/util/ask-ai.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
     declarations: [ModalPopArrayComponent],
@@ -12,6 +13,8 @@ import { AskAIModule } from 'src/app/util/ask-ai.component';
       CommonModule
       ,FormsModule
       ,AskAIModule
+      ,IonicModule
+      
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
   })
