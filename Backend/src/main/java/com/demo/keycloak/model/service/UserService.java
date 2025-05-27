@@ -3,8 +3,6 @@ package com.demo.keycloak.model.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,8 +22,7 @@ public class UserService implements IService<UserDTO, UserEntity> {
 	private final UserSMapper userSMapper;
 	private final UserHistoryService userHistoryService;
 
-	public UserService(IUserRepository repository, UserSMapper userSMapper, UserHistoryService userHistoryService
-			) {
+	public UserService(IUserRepository repository, UserSMapper userSMapper, UserHistoryService userHistoryService) {
 		this.repository = repository;
 		this.userSMapper = userSMapper;
 		this.userHistoryService = userHistoryService;
@@ -39,13 +36,11 @@ public class UserService implements IService<UserDTO, UserEntity> {
 	}
 
 	@Override
-	@Transactional
 	public UserDTO save(UserDTO user) {
 
 		return userSMapper.toDto(repository.save(userSMapper.toEntity(user)));
 	}
 
-	@Transactional(readOnly = true)
 	public UserDTO findByUsername(String username) {
 		Optional<UserEntity> userApp = repository.findByUsername(username);
 		if (userApp.isPresent()) {
@@ -55,44 +50,37 @@ public class UserService implements IService<UserDTO, UserEntity> {
 			return null;
 	}
 
-    @Override
-    @Transactional
-    public void delete(UserEntity entity) {
-        repository.delete(entity);
-    }
-    
-    @Transactional(rollbackFor = PersistenceException.class)
-    public UserDTO updateUser(UserDTO user) {
-    	if (user == null || user.getUsername() == null) {
-    		throw new DemoAppException("Invalid user object");
-    	}
+	@Override
+	@Transactional
+	public void delete(UserEntity entity) {
+		repository.delete(entity);
+	}
 
-    	UserDTO existingUser = findByUsername(user.getUsername());
+	@Transactional(rollbackFor = PersistenceException.class)
+	public UserDTO updateUser(UserDTO user) {
+		if (user == null || user.getUsername() == null) {
+			throw new DemoAppException("Invalid user object");
+		}
 
-    	// Save new user if not found
-    	if (existingUser == null) {
-    		existingUser = save(user);
-    	}
+		UserDTO existingUser = findByUsername(user.getUsername());
+		return updateUserLogin(user, existingUser);
+	}
+	
+	public UserDTO updateUserLogin(UserDTO user, UserDTO existingUser) {
 
-    	// Log user update in history
-    	UserHistoryDTO historyDTO = new UserHistoryDTO();
-    	historyDTO.setUserDTO(existingUser);
-    	
-    	historyDTO = userHistoryService.save(historyDTO);
-    	existingUser = historyDTO.getUserDTO();
+		// Save new user if not found
+		if (existingUser == null) {
+			existingUser = save(user);
+		}
 
-    	return existingUser;
-    }
-    
-    public UserDTO getJWTUser() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		// Log user update in history
+		UserHistoryDTO historyDTO = new UserHistoryDTO();
+		historyDTO.setUserDTO(existingUser);
 
-        if (principal instanceof Jwt jwt) {
-            String username = jwt.getClaimAsString("username");
-            return findByUsername(username);
-        }
+		historyDTO = userHistoryService.save(historyDTO);
+		existingUser = historyDTO.getUserDTO();
 
-        return null;
-    }
+		return existingUser;
+	}
 
 }

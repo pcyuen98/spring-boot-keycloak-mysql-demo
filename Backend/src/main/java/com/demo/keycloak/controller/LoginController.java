@@ -78,8 +78,7 @@ public class LoginController {
         }
     
     @PostMapping("/login")
-    @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> login(@RequestBody UserDTO user, Locale locale) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody UserDTO user, Locale locale) {
     	UserDTO userDTO = userService.updateUser(user);
     	return ResponseEntityUtil.getResponseEntity(userDTO, HttpStatus.OK, null);
     }

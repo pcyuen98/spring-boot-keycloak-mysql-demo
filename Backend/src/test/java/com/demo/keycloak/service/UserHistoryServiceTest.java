@@ -34,7 +34,7 @@ class UserHistoryServiceTest {
 		UserEntity userEntity = new UserEntity();
 		userEntity.setName("last name");
 		userEntity.setSurname("surname");
-		userEntity.setUsername("username1");
+		userEntity.setUsername("saveUserHistory");
 		
 		UserDTO userDTO = userService.save(userSMapper.toDto(userEntity));
 		UserHistoryDTO userHistoryDTO = new UserHistoryDTO();
@@ -54,7 +54,7 @@ class UserHistoryServiceTest {
 		UserEntity userEntity = new UserEntity();
 		userEntity.setName("last name updateUserTest");
 		userEntity.setSurname("surname updateUserTest");
-		userEntity.setUsername("username2");
+		userEntity.setUsername("updateUserTest");
 		
 		UserDTO user = userService.save(userSMapper.toDto(userEntity));
 		

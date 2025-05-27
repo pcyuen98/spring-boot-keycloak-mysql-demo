@@ -1,5 +1,7 @@
 package com.demo.keycloak.controller;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -34,14 +36,14 @@ public class FeedbackController {
 	}
 
 	@PostMapping("/feedback")
-	public ResponseEntity<?> updateFeedback(@RequestBody FeedbackDTO feedbackDTO) {
+	public ResponseEntity<Map<String, Object>> updateFeedback(@RequestBody FeedbackDTO feedbackDTO) {
 
 		UserDTO existingUser = userService.findByUsername(feedbackDTO.getUserDTO().getUsername());
 		feedbackDTO.setUserDTO(existingUser);
 
 		FeedbackDTO feedbackSaved = feedbackService.save(feedbackDTO);
+		logger.info("user feedback saved");
 		return ResponseEntityUtil.getResponseEntity(feedbackSaved, HttpStatus.OK, null);
-
 	}
 
 }
