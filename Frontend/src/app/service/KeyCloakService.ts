@@ -54,7 +54,7 @@ export class KeyCloakService {
     await this.httpCommonService.handleRequest(
       'Restful Keycloak Role Test',
       'Restful Details',
-      `${GlobalConstants.spring_boot_test_url}/role/keycloak`
+      `${GlobalConstants.spring_boot_test_url}/keycloak/role`
     );
   }
 
@@ -62,7 +62,7 @@ export class KeyCloakService {
     await this.httpCommonService.handleRequest(
       'Restful Redis Role Test',
       'Restful Details',
-      `${GlobalConstants.spring_boot_test_url}/role/redis`
+      `${GlobalConstants.spring_boot_test_url}/redis/role`
     );
   }
 

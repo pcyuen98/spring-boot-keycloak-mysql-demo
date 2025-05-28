@@ -24,12 +24,12 @@ public class TestController {
 		this.applicationContext = applicationContext;
 	}
 
-	@GetMapping("/role/redis")
+	@GetMapping("/redis/role")
 	public ResponseEntity<Object> isRoleRedis() {
 		return ResponseEntity.ok(Collections.singletonMap(DEMO_MESSAGE, "Verified from BE. This user has a redis role"));
 	}
 
-	@GetMapping("/role/keycloak")
+	@GetMapping("/keycloak/role")
 	public ResponseEntity<Object> isRoleUser() {
 		return ResponseEntity
 				.ok(Collections.singletonMap(DEMO_MESSAGE, "Verified from BE. This user has a keycloak role"));

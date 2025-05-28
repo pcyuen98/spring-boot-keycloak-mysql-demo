@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.keycloak.exceptions.DemoAppException;
@@ -56,7 +57,7 @@ public class UserService implements IService<UserDTO, UserEntity> {
 		repository.delete(entity);
 	}
 
-	@Transactional(rollbackFor = PersistenceException.class)
+	@Transactional(rollbackFor = PersistenceException.class, isolation = Isolation.SERIALIZABLE)
 	public UserDTO updateUser(UserDTO user) {
 		if (user == null || user.getUsername() == null) {
 			throw new DemoAppException("Invalid user object");

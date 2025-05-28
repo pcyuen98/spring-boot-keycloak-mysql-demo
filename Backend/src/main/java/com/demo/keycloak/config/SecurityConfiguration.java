@@ -19,8 +19,8 @@ public class SecurityConfiguration {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		http.cors().and().authorizeHttpRequests()
-		        .requestMatchers("/demo/test/v1/role/redis*").hasRole("redis")
-				.requestMatchers("/demo/test/v1/role/keycloak*").hasRole("keycloak")
+		        .requestMatchers("/demo/test/v1/redis/**").hasRole("redis")
+				.requestMatchers("/demo/test/v1/keycloak**").hasRole("keycloak")
 				.requestMatchers(HttpMethod.GET, "/user/**", "/demo/**").hasAuthority("SCOPE_profile")
 				.requestMatchers(HttpMethod.POST, "/demo/**").hasAuthority("SCOPE_profile").anyRequest().authenticated()
 				.and().oauth2ResourceServer().jwt();
