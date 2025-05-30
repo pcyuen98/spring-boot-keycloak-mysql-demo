@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.keycloak.exceptions.DemoAppException;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/demo/test/v1")
+@RequiredArgsConstructor
 public class TestController {
 
 	private final ApplicationContext applicationContext;
 	static final String DEMO_MESSAGE = "DEMO Message";
-	public TestController(ApplicationContext applicationContext) {
-		this.applicationContext = applicationContext;
-	}
 
 	@GetMapping("/redis/role")
 	public ResponseEntity<Object> isRoleRedis() {

@@ -23,9 +23,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/demo/keycloak/v1")
+@RequiredArgsConstructor
 public class LoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -35,18 +37,6 @@ public class LoginController {
 	private final UserService userService;
 
 	private final ObjectMapper objectMapper;
-	/**
-	 * Constructor-based dependency injection.
-	 *
-	 * @param loginService service to handle login logic
-	 */
-	public LoginController(LoginService loginService, 
-			UserService userService,
-			ObjectMapper objectMapper) {
-		this.loginService = loginService;
-		this.objectMapper = objectMapper;
-		this.userService = userService;
-	}
     
 	@Operation(summary = "Login and retrieve access token from Keycloak using username and password.",
 			   description = "Authenticates the user with Keycloak and returns an access token based on provided source and destination parameters. Should use HTTP POST for security purposes instead of GET. Demo purposes only")

@@ -15,19 +15,15 @@ import com.demo.keycloak.model.entity.mapper.UserSMapper;
 import com.demo.keycloak.model.repository.IUserRepository;
 
 import jakarta.persistence.PersistenceException;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Service
 public class UserService implements IService<UserDTO, UserEntity> {
 
 	private final IUserRepository repository;
 	private final UserSMapper userSMapper;
 	private final UserHistoryService userHistoryService;
-
-	public UserService(IUserRepository repository, UserSMapper userSMapper, UserHistoryService userHistoryService) {
-		this.repository = repository;
-		this.userSMapper = userSMapper;
-		this.userHistoryService = userHistoryService;
-	}
 
 	@Override
 	@Transactional(readOnly = true)

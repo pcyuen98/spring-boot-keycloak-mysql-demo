@@ -12,20 +12,15 @@ import com.demo.keycloak.model.entity.mapper.UserHistorySMapper;
 import com.demo.keycloak.model.repository.IUserHistoryRepository;
 import com.demo.keycloak.model.repository.IUserRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class UserHistoryService implements IService<UserHistoryDTO, UserHistoryEntity> {
 
 	private final IUserHistoryRepository repository;
 	private final IUserRepository iUserRepository;
 	private final UserHistorySMapper userHistorySMapper;
-
-	public UserHistoryService(IUserHistoryRepository repository, UserHistorySMapper userHistorySMapper
-			,IUserRepository iUserRepository 
-			) {
-		this.repository = repository;
-		this.userHistorySMapper = userHistorySMapper;
-		this.iUserRepository = iUserRepository;
-	}
 
 	@Override
 	@Transactional(readOnly = true)

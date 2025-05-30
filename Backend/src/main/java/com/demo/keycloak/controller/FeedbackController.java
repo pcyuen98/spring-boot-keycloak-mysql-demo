@@ -18,7 +18,10 @@ import com.demo.keycloak.model.service.FeedbackService;
 import com.demo.keycloak.model.service.UserService;
 import com.demo.keycloak.utility_classes.ResponseEntityUtil;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/demo/keycloak/v1")
 @PreAuthorize("isAuthenticated()")
 public class FeedbackController {
@@ -28,12 +31,6 @@ public class FeedbackController {
 	private final FeedbackService feedbackService;
 	
 	private final UserService userService;
-
-	public FeedbackController(FeedbackService feedbackService
-			,UserService userService) {
-		this.feedbackService = feedbackService;
-		this.userService = userService;
-	}
 
 	@PostMapping("/feedback")
 	public ResponseEntity<Map<String, Object>> updateFeedback(@RequestBody FeedbackDTO feedbackDTO) {
