@@ -2,9 +2,20 @@ package com.demo.keycloak.model.entity;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,17 +37,17 @@ public class UserHistoryEntity implements Serializable {
 
 	@Column(name = "login_date", nullable = false)
 	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date loginDate;
+	private LocalDateTime loginDate;
 
 	@OneToOne(cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "user_id", nullable = false)
 	private UserEntity usersEntity;
 
 	// Set creationDate to current time if it's null before persisting
-	@PrePersist
-	protected void onCreate() {
-		if (this.loginDate == null) {
-			this.loginDate = new Date();
-		}
-	}
+    @PrePersist
+    protected void onCreate() {
+        if (this.loginDate == null) {
+            this.loginDate = LocalDateTime.now();
+        }
+    }
 }

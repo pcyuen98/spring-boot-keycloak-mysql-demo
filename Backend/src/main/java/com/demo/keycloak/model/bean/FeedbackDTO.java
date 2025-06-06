@@ -1,7 +1,7 @@
 package com.demo.keycloak.model.bean;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -17,6 +17,6 @@ public class FeedbackDTO implements Serializable {
     private Integer feedbackType;
     private String msg;
     private String answer;
-    private Date creationDate;
+    private LocalDateTime creationDate;
     private UserDTO userDTO;
 }

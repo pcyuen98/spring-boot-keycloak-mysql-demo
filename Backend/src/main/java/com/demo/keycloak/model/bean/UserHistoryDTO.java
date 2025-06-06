@@ -1,10 +1,10 @@
 package com.demo.keycloak.model.bean;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -12,7 +12,7 @@ import java.util.Date;
 public class UserHistoryDTO {
 
     private Long id;
-    private Date loginDate;
+    private LocalDateTime loginDate;
 
     private UserDTO userDTO;
 }

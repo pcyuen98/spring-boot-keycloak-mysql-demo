@@ -24,13 +24,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/demo/keycloak/v1")
 @RequiredArgsConstructor
+@Slf4j
 public class LoginController {
-
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	private final LoginService loginService;
 	
@@ -58,7 +58,7 @@ public class LoginController {
                     .writerWithDefaultPrettyPrinter()
                     .writeValueAsString(token);
 
-            logger.info("Token --> {}", tokenJson);
+            log.info("Token --> {}", tokenJson);
 
             return """
                 {

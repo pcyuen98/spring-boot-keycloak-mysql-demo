@@ -1,5 +1,6 @@
 package com.demo.keycloak.model.service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class UserHistoryService implements IService<UserHistoryDTO, UserHistoryE
 	@Transactional
 	public UserHistoryDTO save(UserHistoryDTO userHistoryDTO) {
 		UserHistoryEntity userHistoryEntity = userHistorySMapper.toEntity(userHistoryDTO);
-		userHistoryEntity.setLoginDate(new Date());
+		userHistoryEntity.setLoginDate(LocalDateTime.now());
 		userHistoryEntity.getUsersEntity().setLastUpdatedDate(userHistoryEntity.getLoginDate());
 		userHistoryEntity = repository.save(userHistoryEntity);
 		iUserRepository.save(userHistoryEntity.getUsersEntity());

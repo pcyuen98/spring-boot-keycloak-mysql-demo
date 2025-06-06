@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demo.keycloak.exceptions.DemoAppException;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/demo/test/v1")
 @RequiredArgsConstructor
+@Slf4j
 public class TestController {
 
 	private final ApplicationContext applicationContext;

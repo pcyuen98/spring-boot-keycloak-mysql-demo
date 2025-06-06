@@ -3,6 +3,7 @@ package com.demo.keycloak.model.entity;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,15 +46,15 @@ public class UserEntity implements Serializable {
 
     @Column(name = "creation_date", nullable = false)
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date creationDate;
+    private LocalDateTime creationDate;
 
     @Column(name = "last_updated_date")
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date lastUpdatedDate;
+    private LocalDateTime lastUpdatedDate;
     
     @Column(name = "deletion_date")
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date deletionDate;
+    private LocalDateTime deletionDate;
 
     @OneToMany(mappedBy = "usersEntity", orphanRemoval = true)
     private List<UserHistoryEntity> userHistoryEntity = new ArrayList<>();
@@ -62,7 +63,7 @@ public class UserEntity implements Serializable {
     @PrePersist
     protected void onCreate() {
         if (this.creationDate == null) {
-            this.creationDate = new Date();
+            this.creationDate = LocalDateTime.now();
         }
     }
 }

@@ -3,16 +3,15 @@ package com.demo.keycloak.config;
 import java.util.Arrays;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Component
 public class BeanLogger implements ApplicationRunner {
-	private static final Logger logger = LoggerFactory.getLogger(BeanLogger.class);
     private final ApplicationContext applicationContext;
 
     public BeanLogger(ApplicationContext applicationContext) {
@@ -21,12 +20,13 @@ public class BeanLogger implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        logger.info("==== Beans from 'com.demo' package ====");
+        log.info("==== Beans from 'com.demo' package ====");
 
         List<String> beanNames = Arrays.asList(applicationContext.getBeanDefinitionNames());
 
         List<String> demoBeans = beanNames.stream()
                 .filter(beanName -> {
+                	
                     Object bean = applicationContext.getBean(beanName);
                     return bean != null && bean.getClass().getPackage() != null &&
                            bean.getClass().getPackage().getName().startsWith("com.demo");
@@ -36,7 +36,7 @@ public class BeanLogger implements ApplicationRunner {
 
         demoBeans.forEach(beanName -> {
             Object bean = applicationContext.getBean(beanName);
-            logger.info("{} -> {}", beanName, bean.getClass().getName());
+            log.info("{} -> {}", beanName, bean.getClass().getName());
         });
     }
 

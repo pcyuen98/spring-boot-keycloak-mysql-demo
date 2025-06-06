@@ -2,7 +2,7 @@ package com.demo.keycloak.model.entity;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -48,7 +48,7 @@ public class FeedbackEntity implements Serializable {
     
     @Column(name = "creation_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date creationDate;
+    private LocalDateTime creationDate;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler","description",
@@ -60,7 +60,7 @@ public class FeedbackEntity implements Serializable {
     @PrePersist
     protected void onCreate() {
         if (this.creationDate == null) {
-            this.creationDate = new Date();
+            this.creationDate = LocalDateTime.now();
         }
     }
 }

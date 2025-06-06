@@ -2,7 +2,6 @@ package com.demo.keycloak.model.service;
 
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

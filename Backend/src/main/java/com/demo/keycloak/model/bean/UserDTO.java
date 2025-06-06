@@ -1,7 +1,7 @@
 package com.demo.keycloak.model.bean;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -19,7 +19,7 @@ public class UserDTO implements Serializable{
     private String surname;
     private String photo;
     private String description;
-    private Date creationDate;
-    private Date deletionDate;
-    private Date lastUpdatedDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime deletionDate;
+    private LocalDateTime lastUpdatedDate;
 }
