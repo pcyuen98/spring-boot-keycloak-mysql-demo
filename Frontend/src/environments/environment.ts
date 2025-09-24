@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  keycloakURL: "http://localhost:7080",
+  keycloakURL: "http://localhost:8080",
   realm: "keycloak",
   clientID: "angularfront",
   redirect: "http://localhost:4200",

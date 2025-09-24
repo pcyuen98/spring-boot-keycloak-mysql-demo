@@ -65,6 +65,7 @@ public class KeycloakClientStandAlone {
                     Map<String, Object> result = new HashMap<>();
                     result.put("message", "Login successful");
                     result.put("access_token", accessToken);
+                    logger.info("accessToken = {}", accessToken);
                     return ResponseEntityUtil.getResponseEntity(result, HttpStatus.OK, null);
                 } else {
                     return ResponseEntityUtil.getResponseEntity("Access token not found", HttpStatus.BAD_REQUEST,
